@@ -1,0 +1,23 @@
+{% extends "academia/base.html" %}
+{% block titulo %}Grade de turmas - {{ academia.nome }}{% endblock %}
+{% block conteudo %}
+  <h2>Grade da semana</h2>
+  <table>
+    <thead>
+      <tr><th>Modalidade</th><th>Dia</th><th>Horário</th><th>Instrutor</th><th>Vagas</th></tr>
+    </thead>
+    <tbody>
+      {% for t in turmas %}
+        <tr>
+          <td>{{ t.modalidade.nome }}</td>
+          <td>{{ t.get_dia_semana_display }}</td>
+          <td>{{ t.horario|time:"H:i" }}</td>
+          <td>{{ t.instrutor }}</td>
+          <td>{{ t.vagas }}</td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="5">Nenhuma turma cadastrada.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

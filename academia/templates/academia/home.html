@@ -1,0 +1,18 @@
+{% extends "academia/base.html" %}
+{% block conteudo %}
+  <div class="card">
+    <h2>{{ academia.nome }}</h2>
+    <p><strong>Endereço:</strong> {{ academia.endereco }}</p>
+    <p><strong>Telefone:</strong> {{ academia.telefone }}</p>
+  </div>
+
+  <h2>Nossas modalidades</h2>
+  {% for m in modalidades %}
+    <div class="card">
+      <h3>{{ m.nome }}</h3>
+      <p>{{ m.descricao }}</p>
+    </div>
+  {% empty %}
+    <p>Nenhuma modalidade disponível no momento.</p>
+  {% endfor %}
+{% endblock %}
